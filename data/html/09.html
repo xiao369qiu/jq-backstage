@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/09.css">
+    <!-- <script src="../../js/jquery.js"></script> -->
+    <script src="../date/js/jquery-1.11.0.min.js"></script>
+    <script src="../date/js/dcalendar.picker.js"></script>
+    <link rel="stylesheet" href="../date/css/dcalendar.picker.css">
+</head>
+<body>
+    <div class="all">
+        <div class="top">
+            <div>
+                <input type="text" placeholder="输入商品名称" class="search_inp" id = "set">
+            </div>
+            <div>
+                <input type="text" id="date_select">
+            </div>
+            <div>
+                <select name="" id="select1" value="" >
+                    <option value="一级分类" id="yijifenlei">一级分类</option>
+                </select>
+            </div>
+            <div>
+                <select name="" id="select2"  value="">
+                    <option value="二级分类">二级分类</option>
+                </select>
+            </div>
+            <button class="btn1" id="btn_key">检索</button>
+        </div>
+        <div class="main">
+            <table>
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        let list_title = ["商品名称","商品图片","参考价格","商品单位","一级分类","二级分类","操作"]
+        let list_goods =[
+            {
+                name:"肖大哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"帅气",
+                sort_two:"肖大哈"
+            },
+           
+            {
+                name:"肖二哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"富有",
+                sort_two:"肖四哈"
+            },
+            {
+                name:"肖三哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"高大",
+                sort_two:"肖七哈"
+            },
+            {
+                name:"肖大哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"帅气",
+                sort_two:"肖二哈"
+            },
+            {
+                name:"肖大哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"帅气",
+                sort_two:"肖二哈"
+            },
+            {
+                name:"肖大哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"帅气",
+                sort_two:"肖二哈"
+            },
+            {
+                name:"肖大哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"帅气",
+                sort_two:"肖二哈"
+            },
+            {
+                name:"肖大哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"帅气",
+                sort_two:"肖二哈"
+            },
+            {
+                name:"肖大哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"帅气",
+                sort_two:"肖二哈"
+            },
+            {
+                name:"肖大哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"帅气",
+                sort_two:"肖二哈"
+            },
+            {
+                name:"肖大哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"帅气",
+                sort_two:"肖二哈"
+            },
+            {
+                name:"肖大哈",
+                img:"地址",
+                price:"10000000000000000000",
+                unit:"全世界最好的帅哥",
+                sort_one:"帅气",
+                sort_two:"肖二哈"
+            },
+        ]
+        let list_sort = new Array()
+        list_sort["全部"]=["全部"]
+        list_sort["帅气"]=["肖二哈","肖二哈","肖三哈"]
+        list_sort["富有"]=["肖四哈","肖五哈","肖六哈"]
+        list_sort["高大"]=["肖七哈","肖八哈","肖九哈"]
+        function Dom(){
+            $("<tr/>").appendTo(".main>table>thead")
+            $(list_title).each(function (index) { 
+                $("<th/>").text(list_title[index]).appendTo(".main>table>thead>tr")
+             })
+            $(list_goods).each(function(index){
+                $(".main>table>tbody").append("<tr/>")
+            })
+            $(".main>table>tbody>tr").each(function(index) {
+                for(let i in list_goods[index]){
+                    $("<td/>").text(list_goods[index][i]).appendTo($(this)) 
+                }
+                let p = $("<button/>").text("修改")
+                p.click(function() {
+                    $("#alter").remove() 
+                    $("<div/>").attr("id","alter").appendTo(".all")
+                    for(let i in list_goods[index]){
+                        $("<input/>").val(list_goods[index][i]).appendTo("#alter")
+                    }
+                    let defined_alter = $("<button/>").text("确定修改").addClass("btn_return")
+                    //确定修改后函数
+                    defined_alter.click(function(){
+                        $("#alter>input").each(function(ll) { 
+                            let oo = $(this).val()
+                            $(p).parents("tr").children("td").each(function(pa){
+                                if(ll==pa){
+                                    $(this).text(oo)
+                                }
+                            })
+                        })       
+                        $("#alter>input").each(function(i){
+                            if(i==0){
+                                list_goods[index].name = $(this).val()
+                            }
+                            if(i==1){
+                                list_goods[index].img = $(this).val()
+                            }
+                            if(i==2){
+                                list_goods[index].price= $(this).val()
+                            }
+                            if(i==3){
+                                list_goods[index].unit= $(this).val()
+                            }
+                            if(i==4){
+                                list_goods[index].sort_one= $(this).val()
+                            }
+                            if(i==5){
+                                list_goods[index].sort_two= $(this).val()
+                            }
+                        })    
+                        $("#alter").remove() 
+                    })
+                    $("#alter").append(defined_alter)
+                })
+                let j = $("<button/>").text("基本信息").css("marginLeft","5%")
+                // j.click(function () {
+                //     list_goods.splice(index,1)
+                //     $(this).parents(".main>table>tbody>tr").remove()
+                //     $("#alter").remove() 
+                // })
+                $("<td/>").append(p,j).addClass("operate").appendTo($(this))
+            })
+        }
+        function btn_key() {
+            $("#btn_key").click(function(){
+                let isexist = false            
+                $(".main>table>tbody>tr").remove()
+                $(list_goods).each(function(index){
+                    if(this.name==$("#set").val()){
+                        isexist=true         
+                        let j = $("<tr/>").appendTo(".main>table>tbody")
+                        for(let i in list_goods[index]){
+                            $("<td/>").text(list_goods[index][i]).appendTo(j)
+                        }
+                        let p = $("<button/>").text("修改").css("marginLeft","-5%")
+                        //修改函数
+                        p.click(function(){
+                            $("#alter").remove() 
+                            $("<div/>").attr("id","alter").appendTo(".all")
+                            for(let i in list_goods[index]){
+                                $("<input/>").val(list_goods[index][i]).appendTo("#alter")
+                            }
+                            let defined_alter = $("<button/>").text("确定修改").addClass("btn_return")
+                            //确定修改后函数
+                            defined_alter.click(function(){
+                                $("#alter>input").each(function(ll) { 
+                                    let oo = $(this).val()
+                                    $(p).parents("tr").children("td").each(function(pa){
+                                        if(ll==pa){
+                                            $(this).text(oo)
+                                        }
+                                    })
+                                })              
+                                $("#alter>input").each(function(i){
+                                    if(i==0){
+                                        list_goods[index].name = $(this).val()
+                                    }
+                                    if(i==1){
+                                        list_goods[index].img = $(this).val()
+                                    }
+                                    if(i==2){
+                                        list_goods[index].price= $(this).val()
+                                    }
+                                    if(i==3){
+                                        list_goods[index].unit= $(this).val()
+                                    }
+                                    if(i==4){
+                                        list_goods[index].sort_one= $(this).val()
+                                    }
+                                    if(i==5){
+                                        list_goods[index].sort_two= $(this).val()
+                                    }
+                                })    
+                                $("#alter").remove() 
+                            })
+                            $("#alter").append(defined_alter)
+                        })
+                        let l = $("<button/>").text("基本信息").css("marginLeft","5%")
+                        // l.click(function(){
+                        //     list_goods.splice(index,1)
+                        //     $(this).parents("tr").remove()
+                        //     $("#alter").remove() 
+                        // })
+                         $("<td/>").append(p,l).addClass("operate").appendTo(j)
+                    }
+                })
+                if(isexist==false){
+                    alert("用户不存在")
+                }
+            })
+        }
+        //选择排序
+        function sortfuc(){
+            for(let i in list_sort){
+                $("<option/>").text(i).appendTo("#select1")  
+            }
+            //第一个选择条件排序
+            $("#select1").change(function () {
+                $("#yijifenlei").remove()
+                $("#select2>option").each(function () {
+                    $(this).remove()
+                })
+                let o = $(this).val()
+                for(let i in list_sort[o]){
+                    $("<option/>").html(list_sort[o][i]).appendTo("#select2")
+                }
+                $(".main>table>tbody>tr").remove()
+                let sel1_val = $("#select1").val()
+                let sel2_val = $("#select2").val()
+                $(list_goods).each(function(index){
+                    if(sel1_val=="全部"){
+                        let j = $("<tr/>").appendTo(".main>table>tbody")
+                        for(let i in list_goods[index]){
+                            $("<td/>").text(list_goods[index][i]).appendTo(j)
+                        }
+                        let p = $("<button/>").text("修改").css("marginLeft","-5%")
+                        p.click(function(){
+                            $("#alter").remove() 
+                            $("<div/>").attr("id","alter").appendTo(".all")
+                            for(let i in list_goods[index]){
+                                $("<input/>").val(list_goods[index][i]).appendTo("#alter")
+                            }
+                            let defined_alter = $("<button/>").text("确定修改").addClass("btn_return")
+                            //确定修改后函数
+                            defined_alter.click(function(){
+                                $("#alter>input").each(function(ll) { 
+                                    let oo = $(this).val()
+                                    $(p).parents("tr").children("td").each(function(pa){
+                                        if(ll==pa){
+                                            $(this).text(oo)
+                                        }
+                                    })
+                                })              
+                                $("#alter>input").each(function(i){
+                                    if(i==0){
+                                        list_goods[index].name = $(this) .val()
+                                    }
+                                    if(i==1){
+                                        list_goods[index].img = $(this).val()
+                                    }
+                                    if(i==2){
+                                        list_goods[index].price= $(this).val()
+                                    }
+                                    if(i==3){
+                                        list_goods[index].unit= $(this).val()
+                                    }
+                                    if(i==4){
+                                        list_goods[index].sort_one= $(this).val()
+                                    }
+                                    if(i==5){
+                                        list_goods[index].sort_two= $(this).val()
+                                    }
+                                })    
+                                $("#alter").remove() 
+                            })
+                            $("#alter").append(defined_alter)
+                        })
+                        let l = $("<button/>").text("基本信息").css("marginLeft","5%")
+                        // l.click(function(){
+                        //     list_goods.splice(index,1)
+                        //     $(this).parents("tr").remove()
+                        //     $("#alter").remove() 
+                        // })
+                        $("<td/>").append(p,l).addClass("operate").appendTo(j)     
+                    }
+                    else if(this.sort_one==sel1_val){  
+                        let j = $("<tr/>").appendTo(".main>table>tbody")
+                        for(let i in list_goods[index]){
+                            $("<td/>").text(list_goods[index][i]).appendTo(j)
+                        }
+                        let p = $("<button/>").text("修改").css("marginLeft","-5%")
+                        //修改函数
+                        p.click(function(){
+                            $("#alter").remove() 
+                            $("<div/>").attr("id","alter").appendTo(".all")
+                            for(let i in list_goods[index]){
+                                $("<input/>").val(list_goods[index][i]).appendTo("#alter")
+                            }
+                            let defined_alter = $("<button/>").text("确定修改").addClass("btn_return")
+                            //确定修改后函数
+                            defined_alter.click(function(){
+                                $("#alter>input").each(function(ll) { 
+                                    let oo = $(this).val()
+                                    $(p).parents("tr").children("td").each(function(pa){
+                                        if(ll==pa){
+                                            $(this).text(oo)
+                                        }
+                                    })
+                                })               
+                                $("#alter>input").each(function(i){
+                                    if(i==0){
+                                        list_goods[index].name = $(this) .val()
+                                    }
+                                    if(i==1){
+                                        list_goods[index].img = $(this).val()
+                                    }
+                                    if(i==2){
+                                        list_goods[index].price= $(this).val()
+                                    }
+                                    if(i==3){
+                                        list_goods[index].unit= $(this).val()
+                                    }
+                                    if(i==4){
+                                        list_goods[index].sort_one= $(this).val()
+                                    }
+                                    if(i==5){
+                                        list_goods[index].sort_two= $(this).val()
+                                    }
+                                })    
+                                $("#alter").remove() 
+                            })
+                            $("#alter").append(defined_alter)
+                        })
+                        let l = $("<button/>").text("基本信息").css("marginLeft","5%")
+                        // l.click(function(){
+                        //     list_goods.splice(index,1)
+                        //     $(this).parents("tr").remove()
+                        //     $("#alter").remove() 
+                        // })
+                         $("<td/>").append(p,l).addClass("operate").appendTo(j)     
+                    }
+                })
+            })
+            //第二个选择条件排序
+            $("#select2").change(function(){
+                $(".main>table>tbody>tr").remove()
+                let sel1_val = $("#select1").val()
+                let sel2_val = $("#select2").val()
+                $(list_goods).each(function(index){
+                    if(this.sort_one==sel1_val&&this.sort_two==sel2_val){
+                        let j = $("<tr/>").appendTo(".main>table>tbody")
+                        for(let i in list_goods[index]){
+                            $("<td/>").text(list_goods[index][i]).appendTo(j)
+                        }
+                        let p = $("<button/>").text("修改").css("marginLeft","-5%")
+                        //修改函数
+                        p.click(function(){
+                            $("#alter").remove() 
+                            $("<div/>").attr("id","alter").appendTo(".all")
+                            for(let i in list_goods[index]){
+                                $("<input/>").val(list_goods[index][i]).appendTo("#alter")
+                            }
+                            let defined_alter = $("<button/>").text("确定修改").addClass("btn_return")
+                            //确定修改后函数
+                            defined_alter.click(function(){
+                                $("#alter>input").each(function(ll) { 
+                                    let oo = $(this).val()
+                                    $(p).parents("tr").children("td").each(function(pa){
+                                        if(ll==pa){
+                                            $(this).text(oo)
+                                        }
+                                    })
+                                })               
+                                $("#alter>input").each(function(i){
+                                    if(i==0){
+                                        list_goods[index].name = $(this) .val()
+                                    }
+                                    if(i==1){
+                                        list_goods[index].img = $(this).val()
+                                    }
+                                    if(i==2){
+                                        list_goods[index].price= $(this).val()
+                                    }
+                                    if(i==3){
+                                        list_goods[index].unit= $(this).val()
+                                    }
+                                    if(i==4){
+                                        list_goods[index].sort_one= $(this).val()
+                                    }
+                                    if(i==5){
+                                        list_goods[index].sort_two= $(this).val()
+                                    }
+                                })    
+                                $("#alter").remove() 
+                            })
+                            $("#alter").append(defined_alter)
+                        })
+                        let l = $("<button/>").text("基本信息").css("marginLeft","5%")
+                        // l.click(function(){
+                        //     list_goods.splice(index,1)
+                        //     $(this).parents("tr").remove()
+                        //     $("#alter").remove() 
+                        // })
+                         $("<td/>").append(p,l).addClass("operate").appendTo(j)
+                    }  
+                })
+            })
+        }
+        Dom()
+        btn_key()
+        sortfuc()
+        $("#date_select").dcalendarpicker()
+    </script>
+</body>
+</html>

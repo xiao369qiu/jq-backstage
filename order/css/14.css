@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  width: 98%;
+  margin-left: 2%;
+}
+
+.main .nav {
+  margin-top: 2%;
+  display: flex;
+}
+
+.main .nav ul {
+  list-style: none;
+}
+
+.main .nav ul li {
+  padding: 10px;
+  border-left: 1px solid #cccccc;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  float: left;
+}
+
+.main .nav ul li:first-child {
+  border-radius: 20px 0 0 20px;
+  color: #FFF;
+  background-color: #13c19f;
+}
+
+.main .nav ul li:last-child {
+  border-right: 1px solid #cccccc;
+  border-radius: 0 20px 20px 0;
+}
+
+#Chart {
+  position: relative;
+  margin: 2% 0;
+  width: 95%;
+  height: 500px;
+  border: 1px solid #cccccc;
+}
+
+.div_inp {
+  color: #415161;
+  width: 190px;
+  margin-right: 10px;
+}
+
+.div_inp #select_inp {
+  outline: none;
+  border-width: 1px;
+  border-style: solid;
+  background-color: #fff;
+  border-color: #cccccc;
+  border-radius: 2px;
+  display: block;
+  font-size: 16px;
+  color: #464646;
+  width: 100%;
+  height: 38px;
+  margin-left: 20px;
+  padding-left: 10px;
+}
+
+.layui-btn {
+  display: inline-block;
+  margin-left: 50px;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 18px;
+  background-color: #009688;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 14px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.main_table {
+  position: relative;
+  bottom: 2%;
+  width: 95%;
+  background-color: #fff;
+  color: #666;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #9c9c9c;
+}
+
+.main_table thead {
+  background-color: #f2f2f2;
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.main_table thead tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main_table thead tr th {
+  background-color: #eef1f9;
+  border: 0 !important;
+  padding: 15px 15px;
+  position: relative;
+  text-align: left;
+  font-weight: 400;
+  min-height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+.main_table tbody {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.main_table tbody tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main_table tbody tr td {
+  border: 0 !important;
+  padding: 15px 15px;
+  position: relative;
+  text-align: left;
+  font-weight: 400;
+  min-height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+}

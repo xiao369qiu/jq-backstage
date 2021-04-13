@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/13.css">
+    <script src="../../js/jquery.js"></script>
+</head>
+<body>
+    <div class="main">
+        <div>
+            <button class="btn1">打印</button>
+        </div>
+        <div class="main_table">
+            <table>
+                <tbody>
+                    <tr><td class="printName" colspan="7">入库单</td></tr>
+                    <tr>
+                        <td class="printDis" colspan="7">
+                            <span>单据日期：2018-03-09 10:10:29</span>
+                            <span class="right">单据编号：DJ9562154640003</span>
+                            <span>入库类型：采购入库</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>序号</th>
+                        <th>商品名称</th>
+                        <th>单位</th>
+                        <th>入库数量</th>
+                        <th>入库单价</th>
+                        <th>入库金额</th>
+                        <th>数据备注</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        let arr = [
+            {
+                name:"肖大哈",
+                unit:"箱",
+                number:"100",
+                price:"56",
+                sum_price:"5555",
+                note:"商品备注"
+            },
+            {
+                name:"肖大哈",
+                unit:"箱",
+                number:"100",
+                price:"56",
+                sum_price:"5555",
+                note:"商品备注"
+            },
+            {
+                name:"肖大哈",
+                unit:"箱",
+                number:"100",
+                price:"56",
+                sum_price:"5555",
+                note:"商品备注"
+            },
+            {
+                name:"肖大哈",
+                unit:"箱",
+                number:"100",
+                price:"56",
+                sum_price:"5555",
+                note:"商品备注"
+            },
+            {
+                name:"肖大哈",
+                unit:"箱",
+                number:"100",
+                price:"56",
+                sum_price:"5555",
+                note:"商品备注"
+            },
+            {
+                name:"肖大哈",
+                unit:"箱",
+                number:"100",
+                price:"56",
+                sum_price:"5555",
+                note:"商品备注"
+            },
+            {
+                name:"肖大哈",
+                unit:"箱",
+                number:"100",
+                price:"56",
+                sum_price:"5555",
+                note:"商品备注"
+            }
+        ]
+        let user="肖大哈"
+        function Dom(){
+            let add = 0
+            $(arr).each(function(index){
+                let p = $("<tr>").appendTo("tbody")
+                $("<td>").text(add).appendTo(p)
+                for(let i in arr[index]){
+                    $("<td>").text(arr[index][i]).appendTo(p)      
+                }
+                add++
+            })
+            let pp = $("<tr>").appendTo("tbody")
+            $("tbody>tr>th").each(function(index){
+                if(index==0){
+                    $("<td>").text("总计").appendTo(pp)
+                }
+                else if(index == 3){
+                    let sum = 0
+                    $(arr).each(function(index){
+                        sum+=parseInt(arr[index].number)
+                    })
+                    $("<td>").text(sum).appendTo(pp)
+                }
+                else if(index == 4){
+                    let sum = 0
+                    $(arr).each(function(index){
+                        sum+=parseInt(arr[index].price)
+                    })
+                    $("<td>").text(sum).appendTo(pp)
+                }
+                else if(index == 5){
+                    let sum = 0
+                    $(arr).each(function(index){
+                        sum+=parseInt(arr[index].sum_price)
+                    })
+                    $("<td>").text(sum).appendTo(pp)
+                }
+                else{
+                    $("<td>").appendTo(pp)
+                }
+            })
+            let ppp = $("<tr>").appendTo("tbody")
+            let j = $("<td>").addClass("bottom_span").attr({colspan:"7"}).appendTo(ppp)
+            $("<span>").text("经手人:"+user).appendTo(j)  
+            $("<span>").addClass("bottom_right").text("打印日期:2021年2月3日").appendTo(j)           
+        }
+        Dom()
+    </script>
+</body>
+</html>

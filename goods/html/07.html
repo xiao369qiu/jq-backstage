@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/07.css">
+    <script src="../../js/jquery.js"></script>
+</head>
+<body>
+    <div class="all">
+        <ul>
+        </ul>
+    </div>
+    <script>
+        let list_title = ["商品名称","商品图片","单位","参考价格","型号","规格","描述","是否批发商品","分类","状态"]
+        function Dom(){
+            $(list_title).each(function(index){
+            let li = $("<li/>").appendTo("ul")
+                $("<div/>").text(list_title[index]).appendTo(li)
+            })
+            $("ul>li").each(function(index){
+                if(index == 1){
+                    // $(this).css("display","flex")
+                    let p = $("<div/>").addClass("add_fileDiv").appendTo(this)
+                    $("<input/>").attr({type:"file"}).addClass("add_file").appendTo(p)
+                }else if(index == 6){
+                    $("<textarea/>").addClass("add_fileDiv").appendTo(this)
+                }else if(index == 7){
+                    let p = $("<label/>").attr({for:"sel_inp1"}).appendTo(this)
+                    $("<p/>").text("是").appendTo(p)
+                    $("<input/>").attr({id:"sel_inp1",type:"radio",name:"re"}).appendTo(p)
+                    let pp = $("<label/>").attr({for:"sel_inp2"}).appendTo(this)
+                    $("<p/>").text("否").appendTo(pp)
+                    $("<input/>").attr({id:"sel_inp2",type:"radio",name:"re"}).appendTo(pp)
+                }
+                else{
+                    $("<input/>").appendTo(this)
+                }
+            })
+            let d = $("<li/>").css("marginLeft","10%").appendTo("ul")
+            $("<button/>").addClass("btn1").text("立即提交").appendTo(d)
+            $("<button/>").addClass("btn2").text("重置").appendTo(d)
+        }
+        Dom()
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.all {
+  width: 100%;
+}
+
+.main_img {
+  margin: 5% auto;
+  width: 25%;
+  height: 200px;
+  background-image: url(../../img/12pic.png);
+  background-size: cover;
+}
+
+p {
+  display: block;
+  width: 100%;
+  height: 77px;
+  line-height: 0px;
+  text-align: center;
+  font-size: 24px;
+  color: #00bfb4;
+  background: url(../../img/line.png) no-repeat center bottom;
+  background-size: 80% auto;
+}
+
+.foot {
+  width: 100%;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 265px;
+  background-image: url(../../img/12_bottom.png);
+  background-size: cover;
+}

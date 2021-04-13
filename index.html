@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery.js"></script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    i{
+            font-style: normal;
+    }
+    .bac>.author{
+        position: relative;
+        top: 2%;
+        left: 5%;
+        display: flex;
+        
+    }
+    .bac>.author>span{
+        text-align: center;
+        line-height: 50px;
+        display: block;
+        width: 200px;
+        height: 100px;
+        border-radius: 30px;
+        background-color: rgba(236, 198, 127, 0.692);
+        color: white;
+    }
+    .bac>.author>div{
+        text-align: left;
+        line-height: 30px;
+        margin-left: 30px;
+        display: block;
+        width: 200px;
+        height: 100px;
+        border-radius: 30px;
+        color: white;
+        
+    }
+    .bac>.author>div>i{
+        font-size: 26px;
+    }
+    .bac{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background:url(./img/log_bac.jpg);
+        background-size: cover;
+    }
+    .box{  
+        position: relative;
+        height: 700px;
+        width: 394px;
+        top: 100px;
+        left: 60%;
+        background-color: black;
+        background: linear-gradient(80deg, #fd82cc -20%, #704aa2 120%);
+        border-radius: 30px;
+        box-shadow: 69px 34px 42px -43px rgba(49, 49, 49, 0.897);
+        border-radius: 22px;
+        font-family: sans-serif;
+       
+        overflow: hidden;
+    }
+    .top{
+        width: 100%;
+        text-align: center;
+        font-family: sans-serif;
+        position: relative;
+        font-size: 27px;
+        text-align: center;
+        line-height: 50px;
+        color: #fff;
+        letter-spacing: -1px;
+    }
+    .top>span{
+        font-size: 27px;
+        text-align: center;
+        line-height: 50px;
+        color: #fff;
+        letter-spacing: -1px;
+        text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+    }
+    li{
+        list-style: none;
+    }
+    .nav{
+        width: 100%;
+        text-align: center;
+        position: relative;
+        top: 10%;
+        color: #fff;
+    }
+    .nav>ul>li:nth-child(1){
+        display: inline-block;
+        font-size: 30px;
+        max-width: 200px;
+    }
+    .nav>ul>li:nth-child(1)::after{
+        content: "";
+        display: inline-block;
+        width: 60px;
+        height: 38px;
+        top: 0;
+        margin-left: 10px;
+        background: url(./img/login/cloud.png);
+        background-size: cover;
+    }
+    .nav>ul>li:nth-child(2){
+        display: block;
+        font-size: 50px;
+        font-weight: bold;
+    }
+    .nav>ul>li:nth-child(2)::after{
+        content: "°C";
+        display: inline-block;
+        width: 80px;
+        height: 50px;
+        top: 0;
+        font-size: 30px;
+        font-weight: normal;
+        /* background: url(../img/cloud.png);
+        background-size: cover; */
+    }
+    .foot{
+        width: 100%;
+        position: relative;
+        text-align: center;
+        top: 5%;
+    }
+    /* .foot::before{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 8%;
+        height: 20%;
+        top: 33%;
+        left: 46%;
+        box-shadow: 5px 5px 10px white;
+    } */
+    .foot>img{
+        width: 10%;
+        height:40px;
+        transform: rotate(180deg);
+        /* transition: e; */
+        /* transform: s; */
+    }
+    .main{
+        width: 100%;
+        height: 70%;
+        position: absolute;
+        background:  linear-gradient(135deg, #fd82cc -20%, #704aa2 120%);
+        bottom: -70%;
+        box-shadow: 2px 2px 4px #00000065;
+        z-index: 2;
+    }
+    .main>ul{
+        width: 100%;
+        height: 100%;
+        margin-top: 5%;
+    }
+    .main_p{
+        text-align: center;
+        line-height: 80px;
+        color: #fff;
+        font-size: 24px;
+    }
+    .main>ul>li{
+        width: 100%;
+        height: 15%;
+        /* border-top:1px solid rgba(rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255)); */
+        box-shadow: 1px 1px 1px #3f3f3f07;
+        overflow: hidden;
+        text-align: center;
+        margin-top: 0px;
+    }
+    .main>ul>li>input{
+        display: block;
+        margin:0 auto;
+        width: 80%;
+        height: 40px;
+        outline: none;
+        border: 1px solid #dddddd3f;
+        border-radius: 40px;
+        padding-left: 10px;
+    }
+    .ulstyle{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .listyle{
+       width: 33%;
+       text-align: center;
+       color: white;
+       line-height: 25px;
+    }
+    /* .main>ul>li:nth-child(1)::before{
+        content: "气候条件";
+        display: block;
+        width: 100%;
+        height: 10%;
+        top: 0;
+        background-color: pink;
+    } */
+
+    .span1{
+        display: block;
+        padding: 12px 0;
+        font-size: 15px;
+        width: 100%;
+        height: 8px;
+        line-height: 8px;
+        margin-bottom: 5px;
+        font-weight: 400;
+        color: white;
+        text-align: center;
+    }
+    .span2{
+        margin: 0 auto;
+        width: 28%;
+        height: 55%;
+        background-size: cover;
+    }
+    .p1{}
+    .i1{
+        font-size: 15px;
+    }
+    .login{
+        margin-top: 20%;
+        width: 100%;
+        height: 300px;
+        /* background-color: orange;         */
+    }
+    .login>ul{
+        width: 100%;
+        height: 100%;
+        margin-top: 100px;
+    }
+    .login>ul>li{
+        list-style: none;
+        margin-top: 30px;
+        
+    }
+    .login>ul>li>input{
+        display: block;
+        margin:0 auto;
+        width: 80%;
+        height: 40px;
+        outline: none;
+        border: 1px solid #dddddd3f;
+        border-radius: 40px;
+        padding-left: 10px;
+    }
+    .login>ul>li>button{
+        display: block;
+        margin:0 auto;
+        width: 40%;
+        height: 40px;
+        outline: none;
+        border: 1px solid #dddddd3f;
+        border-radius: 40px;
+        background-color: orchid;
+        color: white;
+        letter-spacing: 5px;
+        font-size: 16px;
+    }
+    .login>ul>li>button:hover{
+        background-color: rgb(199, 78, 195);
+    }
+    .zhuce{
+        margin-top: 10%;
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 12px;
+    }
+    .btn2{
+        display: block;
+        margin:0 auto;
+        width: 40%;
+        height: 40px;
+        outline: none;
+        border: 1px solid #dddddd3f;
+        border-radius: 40px;
+        background-color: orchid;
+        color: white;
+        letter-spacing: 5px;
+        font-size: 16px;
+    }
+    .btn2:hover{
+        background-color: rgb(199, 78, 195);
+    }
+</style>
+<body>
+    <div class="bac">
+        <div class="author">
+            <span>头像<br>（懒得ps，做个框吧）</span>
+            <div>
+                <i>肖大哈</i>
+                <p>qq:2535400886</p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="top"><span></span></div>
+            <div class="nav">
+                <ul>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="login">
+                <ul>
+                    <li><input type="text" placeholder="账号:" id="user_name"></li>
+                    <li><input type="password" placeholder="密码:" id="user_pas"></li>
+                    <li><button class="btn1">登陆</button></li>
+                </ul>
+            </div>
+            <p class="zhuce">没有账号？点击下方注册</p>
+            <div class="foot"><img src="../../img/login/mo.png" alt=""></div>
+            <div class="main">
+                <ul>
+                    <p class="main_p">肖大哈出品</p>
+                    <li><input type="text" id="mm" placeholder="用户名"></li>
+                    <li><input type="text" placeholder="密码" id="pas"></li>
+                    <li><input type="text" placeholder="邮箱"></li>
+                    <li><input type="text" placeholder="请打出肖大哈最帅，注意这是验证码" id="yan"></li>
+                    <button class="btn2">注册</button>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        let  isturn=true;
+        $(".btn1").click(function(){
+            $.ajax({
+                url:"https://api.apiopen.top/loginUser",
+                type:"post",
+                data:{
+                    apikey:"741fe130d19a599c7ff44f4e3b6acced",
+                    name:$("#user_name").val(),
+                    passwd:$("#user_pas").val(),
+                },
+                success:function(e){
+                    if(e.code==200){
+                        location.href="./index/html/index.html"
+                    }else(
+                        $(".btn1").text("账号密码错误")
+                    )
+                }
+            })
+        })
+        $(".btn2").click(function(){
+            let p = $("#yan")
+            if(p.val()=="肖大哈最帅"){
+                $.ajax({
+                    url:"https://api.apiopen.top/registerUser",
+                    type:"post",
+                    data:{
+                        apikey:"741fe130d19a599c7ff44f4e3b6acced",
+                        name:$("#mm").val(),
+                        passwd:$("#pas").val(),
+                    },
+                    success:function(e){
+                        if(e.code==200){
+                            $(".btn2").text("注册成功")
+                            setTimeout(function(){
+                                $(".nav").css({
+                                    transform: "scale(1)",
+                                    top:"10%",
+                                    transition:"all 1s ease"
+                                })
+                                $(".nav>ul").css({
+                                    marginLeft:"0",
+                                    transition:"all 1s ease"
+                                })
+                                $(".main").css({
+                                    "bottom":"-70%",
+                                    transition:"all 1s ease"
+                                })
+                                $(".foot").css({
+                                    top:"0%",
+                                    transition:"all 1s ease"
+                                })
+                                $(".foot>img").css({
+                                    transform: "rotate(180deg)",
+                                    transition:"all 500 ease"
+                                })
+                                isturn=!isturn
+                            },2000)
+                        }else{
+                            $(".btn2").text("用户已经存在")
+                        }
+                    }
+                })
+            }
+            else{
+                $(".btn2").text("验证码错误")
+            }
+    
+        })
+        let icon = ["./img/login/shidu.png","./img/login/qiya.png","./img/login/nengjiandu.png","./img/login/richu.png","./img/login/rizhaoshichang.png","./img/login/riluo.png","./img/login/wendu.png","./img/login/fangxiang.png",
+                        "./img/login/fengsu.png","./img/login/taiyang.png","./img/login/duoyun.png","./img/login/xiayu.png",]
+        
+        $(".foot>img").mousemove(function(){
+            $(".foot>img").attr("src","./img/login/ckmo.png")
+        })
+        $(".foot>img").mouseleave(function(){
+            $(".foot>img").attr("src","./img/login/mo.png")
+        })
+        $(".foot>img").click(function(){
+            if(isturn){
+                $(".nav").css({
+                    transform: "scale(0.7)",
+                    top:"-1%",
+                    transition:"all 1s ease"
+                })
+                $(".nav>ul").css({
+                    marginLeft:"-60%",
+                    transition:"all 1s ease"
+                })
+                $(".main").css({
+                    "bottom":"0",
+                    opacity: "1",
+                    transition:"all 1s ease"
+                })
+                $(".foot").css({
+                    top:"-65%",
+                    transition:"all 1s ease"
+                })
+                $(".foot>img").css({
+                    transform: "rotate(0deg)",
+                    transition:"all 500 ease"
+                })
+                // $(".login").css({
+                //     height:"0px",
+                //     transition:"all 500 ease",
+                // })
+                isturn=!isturn
+            }
+            else{
+                $(".nav").css({
+                    transform: "scale(1)",
+                    top:"10%",
+                    transition:"all 1s ease"
+                })
+                $(".nav>ul").css({
+                    marginLeft:"0",
+                    transition:"all 1s ease"
+                })
+                $(".main").css({
+                    "bottom":"-70%",
+                    transition:"all 1s ease"
+                })
+                $(".foot").css({
+                    top:"0%",
+                    transition:"all 1s ease"
+                })
+                $(".foot>img").css({
+                    transform: "rotate(180deg)",
+                    transition:"all 500 ease"
+                })
+                isturn=!isturn
+            }
+     
+        })
+        function cha(){
+            $(".nav>ul>li").each(function(index){
+                if(index==0){
+                    $(this).html("晴")
+                }
+                if(index==1){
+                    $(this).html(17)
+                }
+            })
+            $(".top>span").html("登陆")
+        }
+       cha()
+
+    </script>
+</body>
+</html>

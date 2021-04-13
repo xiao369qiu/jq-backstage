@@ -1,0 +1,174 @@
+*{
+    margin: 0;
+    padding:0;
+    line-height: 24px;
+    font: 14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;
+}
+input{
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+}
+.all{
+    margin-left: 2%;
+}
+.top{
+    display: flex;
+    margin-top: 2%;
+    div{
+        margin-left: 1%;
+        
+    }
+    button{
+        width: 190px;
+        margin-right: 10px;
+        margin-left: 1%;
+        display: inline-block;
+        height: 38px;
+        line-height: 38px;
+        padding: 0 18px;
+        background-color: #009688;
+        color: #fff;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 14px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+    select{
+        outline: none;
+        display: block;
+        padding-left: 10px;
+        height: 38px;
+        line-height: 1.3;
+        border-width: 1px;
+        border-style: solid;
+        background-color: #fff;
+        border-radius: 2px;
+        width: 190px;
+        color: rgb(133, 133, 133);
+    }
+    #date_select{
+        outline: none;
+        display: block;
+        padding-left: 10px;
+        height: 38px;
+        line-height: 1.3;
+        border-width: 1px;
+        border-style: solid;
+        background-color: #fff;
+        border-radius: 2px;
+        width: 190px;
+        color: rgb(133, 133, 133);
+    }
+}
+.search_inp{
+    outline: none;
+    display: block;
+    padding-left: 10px;
+    height: 38px;
+    line-height: 1.3;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #fff;
+    border-radius: 2px;
+    width: 190px;
+}
+.main{
+}
+table{
+    width: 98%;
+    background-color: #fff;
+    color: #666;
+    margin: 10px 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-color: grey;
+    thead{
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+        color: #666;
+        tr{
+            background-color: #f2f2f2;
+            th{
+                position: relative;
+                padding: 9px 15px;
+                min-height: 20px;
+                line-height: 20px;
+                font-size: 14px;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #e6e6e6;
+            }
+        }
+    }
+}
+tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+    color: #666;
+    tr{
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+        td{
+            position: relative;
+            padding: 9px 15px;
+            min-height: 20px;
+            line-height: 20px;
+            font-size: 14px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #e6e6e6;
+            margin: 0;
+        }
+        .operate{
+            button{
+                display: inline-block;
+                height: 22px;
+                line-height: 22px;
+                padding: 0 5px;
+                font-size: 12px;
+                border: none;
+                border-radius: 2px;
+                cursor: pointer;
+                background-color: #009688;
+                color: #fff;
+                white-space: nowrap;
+                text-align: center;
+            }
+        }
+    }
+}
+#alter{
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    margin: 0 auto;
+    top:30%;
+    left: 40%;
+    input{
+        display: block;
+        width: 200px;
+        padding-left: 20px;
+        height: 30px;
+        outline: none;
+        border: 1px solid #ccc;
+        color: rgb(66, 66, 66);
+    }
+    .btn_return{
+        outline: none;
+        background-color: rgba(204, 73, 73, 0.473);
+        border: 1px solid pink;
+        width: 100px;
+        height: 50px;
+        border-radius: 15px;
+        color: white;
+        margin-left: 60px;
+        margin-top: 20px;
+    }
+}

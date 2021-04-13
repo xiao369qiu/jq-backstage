@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/02.css">
+    <script src="../../js/jquery.js"></script>
+</head>
+<body>
+    <div class="all">
+        <h1 class="top">IconFont</h1>
+        <div class="main"></div>
+        <h2 class="foot_title">font-class引用</h2>
+        <div class="foot">
+            <p>font-class是unicode使用方式的一种变种，主要是解决unicode书写不直观，语意不明确的问题。</p>
+            <p>与unicode使用方式相比，具有如下特点：</p>
+            <ul>
+                <li>兼容性良好，支持ie8+，及所有现代浏览器。</li>
+                <li>相比于unicode语意明确，书写更直观。可以很容易分辨这个icon是什么。</li>
+                <li>因为使用class来定义图标，所以当要替换图标时，只需要修改class里面的unicode引用。</li>
+                <li>不过因为本质上还是使用的字体，所以多色图标还是不支持的。</li>
+            </ul>
+            <p>使用步骤如下：</p>
+            <p>第一步：引入项目下面生成的fontclass代码：</p>
+            <div class="biaoqian"></div>
+            <p>第二步：挑选相应图标并获取类名，应用于页面：</p>
+            <div class="biaoqian2"></div>
+            <i>"iconfont"是你项目下的font-family。可以通过编辑项目查看，默认是"iconfont"。</i>
+        </div>
+    </div>
+    <script>
+        let icon_arr = ["../../img/iconfont/icon1.png","../../img/iconfont/icon2.png","../../img/iconfont/icon3.png","../../img/iconfont/icon4.png","../../img/iconfont/icon5.png","../../img/iconfont/icon6.png","../../img/iconfont/icon7.png","../../img/iconfont/icon8.png","../../img/iconfont/icon9.png","../../img/iconfont/icon10.png","../../img/iconfont/icon11.png","../../img/iconfont/icon12.png","../../img/iconfont/icon13.png","../../img/iconfont/icon14.png","../../img/iconfont/icon15.png","../../img/iconfont/icon16.png","../../img/iconfont/icon17.png","../../img/iconfont/icon18.png","../../img/iconfont/icon19.png","../../img/iconfont/icon20.png","../../img/iconfont/icon21.png","../../img/iconfont/icon22.png","../../img/iconfont/icon23.png","../../img/iconfont/icon24.png","../../img/iconfont/icon25.png","../../img/iconfont/icon26.png","../../img/iconfont/icon27.png","../../img/iconfont/icon28.png","../../img/iconfont/icon29.png","../../img/iconfont/icon30.png","../../img/iconfont/icon31.png","../../img/iconfont/icon32.png","../../img/iconfont/icon33.png","../../img/iconfont/icon34.png","../../img/iconfont/icon35.png","../../img/iconfont/icon36.png","../../img/iconfont/icon37.png","../../img/iconfont/icon38.png","../../img/iconfont/icon39.png","../../img/iconfont/icon40.png",]
+        function Dom(){
+            console.log(icon_arr.length)
+            let int = Math.ceil(icon_arr.length/5)
+            for(let i = 0;i<int;i++){
+                $(".main").append("<ul/>")
+            }
+            $(".main>ul").each(function(index){
+                for(var i=0;i<5;i++){
+                    $(this).append("<li/>")
+                }
+            })
+            $(".main>ul>li").each(function(index){
+                let p = $("<span/>").css("backgroundImage","url("+icon_arr[index]+")")
+                $(this).append(p)
+                $(this).append("<p/>")
+                $(this).append("<i/>")
+            })
+            $(".main>ul>li>p").each(function(index){
+                $(this).text("名称["+index+"]")
+            })
+            $(".main>ul>li>i").each(function(index){
+                $(this).text("icon_"+index)
+            })
+            $(".main>ul>li>span").each(function(index){
+                $(this).mouseover(function () { 
+                    $(this).css("transform","scale(2)")
+                 })     
+                 $(this).mouseleave(function () { 
+                    $(this).css("transform","scale(1)")
+                 })      
+            })
+            // $(icon_arr).each(function(index){
+            //     let p = $("<span/>").css("backgroundImage","url("+icon_arr[index]+")")
+            // })
+            $(".biaoqian").html('link rel="stylesheet" type="text/css" href="./iconfont.css"')
+            $(".biaoqian2").html('i class="iconfont icon-xxx"></i')
+        }
+        $(function(){
+            Dom()
+        })
+    </script>
+</body>
+</html>

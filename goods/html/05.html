@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/05.css">
+    <script src="../../js/jquery.js"></script>
+</head>
+<body>
+    <div class="all">
+        <div class="sel">
+            <label for="set_key">
+                <input type="text" id = "set" placeholder="输入分管名称">
+            </label>
+            <button class="set_key" id = "btn_key">检索</button>     
+        </div>
+        <table>
+
+            <thead>
+                <tr>
+                    <td>名称</td>
+                    <td>描述</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="alter">
+    </div>
+<script>
+    let user = [
+        {
+            name:"肖大哈",
+            describe:"例如：es4",
+        },
+        {
+            name:"肖二哈",
+            describe:"例如：es5"
+        },
+        {
+            name:"肖三哈",
+            describe:"例如：es6",
+        }
+    ]
+    $(user).each(function(index){
+        $("tbody").append("<tr/>")
+    })
+    $("tbody>tr").each(function(index){    
+         for(let i in user[index]){
+            $("<td/>").text(user[index][i]).appendTo(this)
+         }  
+         let p = $("<button/>").text("修改").css({marginLeft:"10%",backgroundColor:"#009688",color:"white"})
+         p.click(function(){
+            $("#alter").remove() 
+           pp = $("<div/>").attr("id","alter").appendTo(".all")
+            for(let i in user[index]){
+                $("<input/>").val(user[index][i]).appendTo("#alter")
+            } 
+            let defined_alter = $("<button/>").text("确定修改").addClass("btn_return")
+            defined_alter.click(function(){
+                $("#alter>input").each(function(ll) { 
+                    let oo = $(this).val()
+                    $(p).parents("tr").children("td").each(function (params) {
+                        if(params==ll){
+                         $(this).text(oo)
+                        }
+                    })
+                 })          
+               
+                $("#alter>input").each(function(i){
+                    if(i==0){
+                        user[index].name = $(this) .val()
+                    }
+                    if(i==1){
+                        user[index].describe = $(this).val()
+                    }
+                })    
+                $("#alter").remove() 
+            })
+            $("#alter").append(defined_alter)
+         })
+         let j = $("<button/>").text("添加二级列表").css("marginLeft","2%")
+         let h = $("<button/>").text("二级列表基本信息").css("marginLeft","5%")
+         $("<td/>").append(p,j,h).appendTo(this)
+    }) 
+       //检索
+       $("#btn_key").click(function(){
+        $(user).each(function(index){
+            if(this.name==$("#set").val()){
+                $("tbody>tr").remove()
+                $("tbody").append("<tr/>")
+                $("tbody>tr").each(function(){
+                    for(let i in user[index]){
+                        $("<td/>").text(user[index][i]).appendTo(this)
+                    }
+                })
+                let p = $("<button/>").text("修改").css({marginLeft:"10%",backgroundColor:"#009688",color:"white"})
+                p.click(function(){
+                    $("#alter").remove() 
+                    pp = $("<div/>").attr("id","alter").appendTo(".all")
+                        for(let i in user[index]){
+                            $("<input/>").val(user[index][i]).appendTo("#alter")
+                        } 
+                        let defined_alter = $("<button/>").text("确定修改").addClass("btn_return")
+                        defined_alter.click(function(){
+                            $("#alter>input").each(function(ll) { 
+                                let oo = $(this).val()
+                                $("tbody>tr>td").each(function (params) {
+                                    if(params==ll){
+                                    $(this).text(oo)
+                                    }
+                                })
+                            })          
+                        
+                            $(this).parents("td").each(function(i){
+                                if(i==0){
+                                    user[index].name = $(this) .html()
+                                }
+                                if(i==1){
+                                    user[index].describe = $(this).html()
+                                }
+                            })    
+                            $("#alter").remove() 
+                        })
+                        $("#alter").append(defined_alter)
+                    })
+                    let j = $("<button/>").text("添加二级列表").css("marginLeft","2%")
+                    let h = $("<button/>").text("二级列表基本信息").css("marginLeft","5%")
+                    $("<td/>").append(p,j,h).appendTo("tbody>tr")
+                }
+          
+        })
+    })
+</script>
+</body>
+</html>

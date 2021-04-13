@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/14.css">
+    <script src="../../js/echarts.min.js"></script>
+    <script src="../date/js/jquery-1.11.0.min.js"></script>
+    <script src="../date/js/dcalendar.picker.js"></script>
+    <link rel="stylesheet" href="../date/css/dcalendar.picker.css">
+</head>
+<body>
+    <div class="main">
+        <div class="nav">
+            <ul>
+                <li>本周</li>
+                <li>上周</li>
+                <li>本月</li>
+                <li>上月</li>
+            </ul>
+            <div class="div_inp"> 
+                <input type="text" id="select_inp">
+            </div>
+            <button class="layui-btn">检索</button>
+        </div>
+        <div  id="Chart"></div>
+        <table class="main_table">
+            <thead class="main_thead">
+                <tr>
+                    <th>日期</th>
+                    <th>订货单</th>
+                    <th>退货单</th>
+                    <th>订货客户数量</th>
+                    <th>退货客户数</th>
+                    <th>订货金额</th>
+                    <th>退货金额</th>
+                    <th>金额小计</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <script>
+        let arr = [["2020-11-12",0,0,0,0,0,0,0],["2020-11-12",0,0,0,0,0,0,0],["2020-11-12",0,0,0,0,0,0,0],["2020-11-12",0,0,0,0,0,0,0],["2020-11-12",0,0,0,0,0,0,0],]
+        let chartDom = document.getElementById('Chart');
+        let myChart = echarts.init(chartDom);
+        let option;
+        option = {
+            title: {
+                text: '想图自己找'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            legend: {
+                data: ['邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎']
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: '邮件营销',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name: '联盟广告',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name: '视频广告',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [150, 232, 201, 154, 190, 330, 410]
+                },
+                {
+                    name: '直接访问',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name: '搜索引擎',
+                    type: 'line',
+                    stack: '总量',
+                    label: {
+                        show: true,
+                        position: 'top'
+                    },
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: [820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+        option && myChart.setOption(option);
+        $("#select_inp").dcalendarpicker()
+        $("<tbody/>").appendTo(".main_table")
+        $(arr).each(function(index){
+                let p = $("<tr>").appendTo(".main_table>tbody")
+               $(arr[index]).each(function(pa){
+                   $("<td>").text(arr[index][pa]).appendTo(p)
+               }) 
+        })
+    </script>
+</body>
+</html>

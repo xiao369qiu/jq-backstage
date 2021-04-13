@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.all {
+  margin-left: 30px;
+}
+
+h1 {
+  font-style: normal;
+}
+
+.top {
+  color: #404040;
+  font-weight: 500;
+  line-height: 40px;
+  margin-bottom: 24px;
+  font-size: 28px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.main {
+  width: 100%;
+}
+
+.main ul {
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+}
+
+.main ul li {
+  margin-top: 1%;
+  margin-left: 20px;
+  list-style: none;
+  width: 10%;
+  height: 150px;
+  float: left;
+}
+
+.main ul li span {
+  display: block;
+  height: 40%;
+  width: 35%;
+  background-size: cover;
+  margin: 0 auto;
+  margin-top: 5%;
+  transition: all 0.3s ease;
+}
+
+.main ul li p {
+  margin-top: 5%;
+  line-height: 40px;
+}
+
+.main ul li i {
+  display: block;
+  font-style: normal;
+}
+
+.foot_title {
+  font-size: 22px;
+  color: #404040;
+  margin: 1.6em 0 0.6em 0;
+  font-weight: 500;
+  clear: both;
+  list-style: none;
+  border-bottom: 1px solid #eee;
+  line-height: 80px;
+}
+
+.foot p {
+  color: #666;
+  font-size: 14px;
+  line-height: 40px;
+}
+
+.foot ul {
+  margin-left: 2%;
+}
+
+.foot ul li {
+  list-style-type: circle;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.foot div {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.8;
+  border-radius: 6px;
+  background: #f7f7f7;
+  padding: 20px;
+}
+
+.foot i {
+  display: block;
+  margin-top: 1%;
+  font-size: 90%;
+  color: #999;
+  font-style: italic;
+}

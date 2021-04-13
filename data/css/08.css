@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.all {
+  width: 100%;
+}
+
+ul {
+  width: 80%;
+}
+
+ul li {
+  width: 100%;
+  margin-top: 2%;
+  display: flex;
+}
+
+ul li div {
+  width: 15%;
+  text-align: right;
+  margin-left: 2%;
+}
+
+ul li input {
+  outline: none;
+  width: 80%;
+  height: 40px;
+  margin-left: 3%;
+  border: 1px solid #cccccc;
+  padding-left: 2%;
+}
+
+ul li select {
+  width: 15%;
+  height: 30px;
+  margin-left: 3%;
+}
+
+ul li textarea {
+  display: block;
+  outline: none;
+  border: 1px solid #ccc;
+  margin-left: 3%;
+  padding-left: 2%;
+  padding-top: 1%;
+  width: 80%;
+  height: 100px;
+}
+
+ul li label {
+  width: 10%;
+  height: 10%;
+  display: flex;
+  margin-left: 4%;
+  transition: all 0.1s ease;
+}
+
+ul li label input {
+  display: block;
+  margin-top: 3px;
+  margin-left: 5%;
+  height: 20px;
+  width: 20px;
+}
+
+ul li label p {
+  font-size: 18px;
+  display: block;
+  line-height: 22px;
+}
+
+ul li .div_edit {
+  width: 80%;
+  text-align: right;
+  margin-left: 3%;
+  border: 1px solid #cccccc;
+}
+
+ul li .div_edit div {
+  width: 80%;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+}
+
+ul li .div_edit div span {
+  display: block;
+  width: 3%;
+  height: 45%;
+  background-size: cover;
+  margin: auto;
+}
+
+ul li .div_edit textarea {
+  margin-left: 0%;
+  display: block;
+  width: 98%;
+  height: 300px;
+}
+
+.btn1 {
+  margin-top: 1%;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 18px;
+  background-color: #009688;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 14px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.btn2 {
+  margin-top: 1%;
+  border: 1px solid #C9C9C9;
+  background-color: #fff;
+  color: #555;
+  margin-left: 20px;
+  border-radius: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 14px;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 18px;
+}
+
+.btn3 {
+  margin-top: 1%;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 18px;
+  background-color: #009688;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 14px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-left: 20px;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/03.css">
+    <script src="../../js/jquery.js"></script>
+</head>
+<body>
+    <div class="all">
+        <ul>
+        </ul>
+    </div>
+    <script>
+        let title = ["身份证号","价格","分管名称","地区","负责人","登录名","登陆密码","确认密码","电话","传真","邮箱","备注","是否开通"]
+        let city  = new Array()
+        city['北京'] = ["北京"]
+        city["成都"] = ["成都","德阳","绵阳","攀枝花"]
+        city["贵州"] = ["贵阳",'遵义',"黄果树"] 
+        $(title).each(function(index){
+            $(".all>ul").append("<li/>")
+        })
+        $(".all>ul>li").each(function(index){
+            let p = $("<div/>").text(title[index])
+            $(this).append(p)
+            if(index==3){
+                let se = $("<select/>").addClass("select1")
+                $(this).append(se)
+                $(".select1").append("<option/>")
+                $(".select1>option").html("请选择省份")
+                let se2 = $("<select/>").addClass("select2")
+                $(this).append(se2)
+                $(".select2").append("<option/>")
+                $(".select2>option").html("请选择城市") 
+            }
+            else if(index==11){
+                let j = $("<textarea/>")
+                $(this).append(j)
+                j.attr("placeholder","请输入内容")
+            }
+            else if(index==12){
+                let j = $("<input/>").attr({type:"radio",name:"re"})
+                j.css({height:"25px",width:"25px",marginTop:"8px"})
+                let jj = $("<p/>").html("启动")
+                jj.css({lineHeight:"40px",marginLeft:"20px"})
+                let p = $("<input/>").attr({type:"radio",name:"re"})
+                p.css({height:"25px",width:"25px",marginTop:"8px"})
+                let pp = $("<p/>").html("禁用")
+                pp.css({lineHeight:"40px",marginLeft:"20px"})
+                $(this).append(j)
+                $(this).append(jj)
+                $(this).append(p)
+                $(this).append(pp)
+            }
+            else{
+                let j = $("<input>").css("padding-left","8px")
+                $(this).append(j)
+            }         
+        })
+        $(".all>ul>li>input:eq(2)").attr("placeholder","例：肖大哈最帅(信大哈得永生)")
+        $(".all>ul>li>input:eq(3)").attr("placeholder","只许输入中文")
+        $(".all>ul>li>input:eq(4)").attr("placeholder","只许输入中文")
+        $(".all>ul>li>input:eq(7)").attr("placeholder","例:2535400886")
+        
+        //二级联动
+        function chain(){
+            //创建第一个select的option节点，并把二维数组的索引值给第一个select
+            for(let i in city){
+                let pp= $("<option/>").html(i)
+                $(".select1").append(pp)
+            }
+            //把第一个select选择改变后的选项给到select的val
+            $(".select1>option").each(function(index){
+                $(".select1").val($(this).html())
+            })
+            //添加change事件
+            $(".select1").change(function(){
+                //每次改变select1的val内容就把select2的所有内容清空，避免叠加
+                $(".select2>option").each(function(){
+                    $(this).remove()
+                })
+                let o =  $(".select1").val() //获取select1的val值
+                //当select.val()改变，就获取其下标对应的二维数组的值，并且创造option
+                for(var i in city[o]){
+                    let pp= $("<option/>").html(city[o][i])
+                    $(".select2").append(pp)
+                }
+            })
+        }
+        chain()
+   
+          
+    </script>
+</body>
+</html>

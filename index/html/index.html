@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../js/jquery.js"></script>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div class="all">
+        <div id="left" >
+            <div class="left_title"></div>
+            <div class="list"></div>
+        </div>
+        <div id="right">
+            <div id="right_top"></div>
+            <div id="right_main">
+                <div id="right_top2"></div>
+                <iframe src="../../API/html/01.html" frameborder="0"  id="ifma"></iframe>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function()
+        {
+            list_Dom()
+            right_Dom()
+            locotion_href()
+        })
+        let address = ["../../add_control/html/03.html","../../List/html/04.html","../../goods/html/05.html","../../goods/html/06.html","../../goods/html/07.html","../../data/html/08.html","../../data/html/09.html","../../data/html/10.html","../../data/html/10.html","../../data/html/11.html","../../data/html/12.html","../../mould/html/13.html","../../order/html/14.html",]
+        let list_arr=["前端API","iconfont字体库","分管管理","商品管理","基础库内容","打印模板","财务管理","报表模板"]
+        let icon_arr=["../../img/icon_1.png","../../img/icon_2.png","../../img/icon_3.png","../../img/icon_4.png","../../img/icon_5.png","../../img/icon_6.png","../../img/icon_7.png","../../img/icon_8.png",]
+        let list_sd_2=["添加分管","分管列表","分类列表","基本商品库","添加商品","表单含编辑器","常用列表","可新增的列表","可新增列表(手写)","页签切换Table","维护中页面","入库打印模板","订单统计报表"]
+        function list_Dom(){
+            $("<span/>").text("头像").appendTo(".left_title")
+            $(".left_title").append("<p/>")
+            $(".left_title>p").html("肖大哈出品")
+            $(".list").append("<ul/>")
+            for(let i = 0;i<list_arr.length;i++){
+                let li = $("<li/>").addClass("list_nav")
+                $(".list>ul").append(li)
+            }
+            $(".list_nav").each(function(){
+                let p= $("<div/>").addClass("list_first")
+                $(this).append(p)
+           
+            })
+            $(".list_nav>div").each(function(index){
+                $(this).append("<div/>")
+                $(this).append("<span/>")
+                $(this).append("<p/>")
+                if(index == 2||index==3||index==4||index==5||index==7){
+                    $(this).append("<i/>")
+                }
+            })
+
+            let navP = $(".list_nav>.list_first>p")
+            for(let i = 0;i<list_arr.length;i++){
+                navP[i].innerText=list_arr[i]
+            }   
+            let navSpan = $(".list_nav>.list_first>span")
+            for(let i = 0;i<icon_arr.length;i++){
+                navSpan[i].style.backgroundImage = "url("+icon_arr[i]+")"
+            }
+            
+            $(".list_nav").each(function (index) { 
+                let isturn = true //同一个按键的重复点击收缩判断
+                //2
+                if(index==2){  
+                    for(let i = 0;i<2;i++){
+                        let p = $("<div/>").addClass("list_second")
+                        $(this).append(p)
+                    }
+                }
+                //3
+                if(index==3){
+                    for(let i = 0;i<3;i++){
+                        let p = $("<div/>").addClass("list_second")
+                        $(this).append(p)
+                    }
+                }
+                //4
+                if(index==4){
+                    for(let i = 0;i<6;i++){
+                        let p = $("<div/>").addClass("list_second")
+                        $(this).append(p)
+                    }
+                }
+                //5
+                if(index==5){
+                    for(let i = 0;i<1;i++){
+                        let p = $("<div/>").addClass("list_second")
+                        $(this).append(p)
+                    }
+                }
+                //7
+                if(index==7){
+                    $(this).css({borderBottom:"1px solid rgb(63, 63, 63)"})
+                    for(let i = 0;i<1;i++){
+                        let p = $("<div/>").addClass("list_second")
+                        $(this).append(p)
+                    }
+                }
+             })
+             //二级列表添加文字
+            $(".list_first").each(function (params) {
+                $(this).mouseover(function () {
+                    $(this).addClass("retrn_movergb")
+                })
+                $(this).mouseleave(function (params) {
+                    $(this).removeClass("retrn_movergb")
+                })
+            })
+            let jj = document.querySelectorAll(".list_second")
+             console.log(list_sd_2.length)
+             for(let i =0;i<list_sd_2.length;i++){
+                 jj[i].innerText=list_sd_2[i]
+             }
+        }
+        function right_Dom() {
+            let top_title = ["注销"] 
+            $("#right_top").append("<ul/>")
+            $(top_title).each(function (index) {
+                let p = $("<li/>").text(top_title[index])
+                $("#right_top>ul").append(p)
+            })
+            $("#right_top>ul>li:eq(0)").click(function(){
+                location.href="../../login/html/login.html"
+            })
+            $("<div/>").text("肖大哈首页").appendTo("#right_top2")
+        }
+        function locotion_href(){
+            $(".list_first").each(function(index){
+                 //同一个按键的重复点击收缩判断
+                //2
+                if(index==0){
+                    $(this).click(function(){
+                        $(".list_second").removeClass("list_second_clickstyle")
+                        $("#ifma").attr({src:"../../API/html/01.html"})
+                        $("#right_top2>div").html("肖大哈首页")
+                    })
+                }
+                else if(index==1){
+                    $(this).click(function(){
+                        $(".list_second").removeClass("list_second_clickstyle")
+                        $("#ifma").attr({src:"../../iconfont/html/02.html"})
+                        $("#right_top2>div").html("iconfont")
+                    })
+                }
+                else if(index==2){  
+                    $(this).click(function () {
+                        let j = $(this).next()
+                        if(j.height() ==0){
+                            $(".list_second").css({height:"0"})
+                            $(".list_nav>.list_first>i").css({transform: "rotate(270deg)"})
+                            $(".list_nav:eq(2)>.list_first>i").css({transform: "rotate(0deg)"})       
+                            $(".list_nav:eq(2)>.list_second").css("height","50px")
+                        }
+                        else{
+                            $(".list_second").css({height:"0"})
+                            $(".list_nav:eq(2)>.list_first>i").css({transform: "rotate(270deg)"})
+                        }  
+                    })
+                }
+                //3
+                else if(index==3){
+                    $(this).click(function () {
+                        let j = $(this).next()
+                        if(j.height() ==0){
+                            $(".list_nav>.list_first>i").css({transform: "rotate(270deg)"})
+                            $(".list_nav:eq(3)>.list_first>i").css({transform: "rotate(0deg)"})
+                            $(".list_second").css({height:"0"})
+                            $(".list_nav:eq(3)>.list_second").css("height","50px")
+                        }
+                        else{
+                            $(".list_second").css({height:"0"})
+                            $(".list_nav:eq(3)>.list_first>i").css({transform: "rotate(270deg)"})
+                        }  
+
+                    })
+                }
+                //4
+                else if(index==4){
+                    $(this).click(function () {
+                        let j = $(this).next()
+                        if(j.height() ==0){
+                            $(".list_nav>.list_first>i").css({transform: "rotate(270deg)"})
+                            $(".list_nav:eq(4)>.list_first>i").css({transform: "rotate(0deg)"})
+                            $(".list_second").css({height:"0"})
+                            $(".list_nav:eq(4)>.list_second").css("height","50px")
+                        }
+                        else{
+                            $(".list_second").css({height:"0"})
+                            $(".list_nav:eq(4)>.list_first>i").css({transform: "rotate(270deg)"})
+                        }  
+                    })
+                }
+                //5
+                else if(index==5){
+                    $(this).click(function () {
+                        let j = $(this).next()
+                        if(j.height() ==0){
+                            $(".list_nav>.list_first>i").css({transform: "rotate(270deg)"})
+                            $(".list_nav:eq(5)>.list_first>i").css({transform: "rotate(0deg)"})
+                            $(".list_second").css({height:"0"})
+                            $(".list_nav:eq(5)>.list_second").css("height","50px")
+                        }
+                        else{
+                            $(".list_second").css({height:"0"})
+                            $(".list_nav:eq(5)>.list_first>i").css({transform: "rotate(270deg)"})
+                        }  
+                    })
+                }
+                //7
+                else if(index==7){
+                    $(this).click(function () {
+                        let j = $(this).next()
+                        if(j.height() == 0){
+                            $(".list_nav>.list_first>i").css({transform: "rotate(270deg)"})
+                            $(".list_nav:eq(7)>.list_first>i").css({transform: "rotate(0deg)"})
+                            $(".list_second").css({height:"0"})
+                            $(".list_nav:eq(7)>.list_second").css("height","50px")
+                        }
+                        else if(this.style.height != 0){
+                            $(".list_second").css({height:"0"})
+                            $(".list_nav:eq(7)>.list_first>i").css({transform: "rotate(270deg)"})
+                        }  
+                    })
+                }
+            })
+            $(".list_second").mousemove(function(){
+                $(this).addClass("list_second_movestyle")
+            })
+            $(".list_second").mouseleave(function(){
+                $(this).removeClass("list_second_movestyle")
+            })
+            $(".list_second").each(function(index){
+                $(this).click(function(){
+                    $(".list_second").removeClass("list_second_clickstyle")
+                    $(this).addClass("list_second_clickstyle")
+                    $("#ifma").attr({src:address[index]})
+                    $("#right_top2>div").html(list_sd_2[index])
+                })
+            })
+            $(".list_first").each(function(){
+                $(this).click(function(){
+                    $(".list_first").removeClass("retrn_clickrgb")
+                    $(this).addClass("retrn_clickrgb")
+                })
+            })
+        }
+   </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/11.css">
+    <script src="../../js/jquery.js"></script>
+</head>
+<body>
+    <div class="all">
+        <div class="top">
+            <p class="title_one p_style">历史列表</p>
+            <p class="title_two">今日列表</p>
+        </div>
+        <div class="main">
+            <div>
+                <iframe src="../next_level/html/one.html" frameborder="0" id="main"></iframe>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(".title_one").click(function(){
+            $(".top>p").each(function(){
+                $(this).removeClass("p_style")
+                $("#main").attr({src:"../next_level/html/one.html"})
+            })
+            $(this).addClass("p_style")
+        })
+        $(".title_two").click(function(){
+            $(".top>p").each(function(){
+                $(this).removeClass("p_style")
+                $("#main").attr({src:"../next_level/html/two.html"})
+            })
+            $(this).addClass("p_style")
+        })
+    </script>
+</body>
+</html>

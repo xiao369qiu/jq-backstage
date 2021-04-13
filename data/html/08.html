@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/08.css">
+    <script src="../../js/jquery.js"></script>
+</head>
+<body>
+    <div class="all">
+        <ul></ul>
+    </div>
+    <script>
+        let  list_title = ["分管名称","地区","负责人","备注","是否开通","富文本编辑器"]
+        let  list_city = []
+        list_city['北京'] = ["北京"]
+        list_city["四川"] = ["成都","绵阳","德阳","宜宾"]
+        list_city["云南"] = ["昆明","丽江","西双版纳","大理"]
+        let icon = ["../../img/08_img/font_weight1.png","../../img/08_img/font_qingxie1.png","../../img/08_img/font_xiahuaxian1.png","../../img/08_img/line_delete1.png","../../img/08_img/youduiqi1.png","../../img/08_img/jvzhong1.png","../../img/08_img/zuoduiqi1.png","../../img/08_img/charu1.png","../../img/08_img/lianjie_delete1.png","../../img/08_img/biaoqing1.png","../../img/08_img/photo1.png"]
+        let icon2 = ["../../img/08_img/font_weight2.png","../../img/08_img/font_qingxie2.png","../../img/08_img/font_xiahuaxian2.png","../../img/08_img/line_delete2.png","../../img/08_img/youduiqi2.png","../../img/08_img/jvzhong2.png","../../img/08_img/zuoduiqi2.png","../../img/08_img/charu2.png","../../img/08_img/lianjie_delete2.png","../../img/08_img/biaoqing2.png","../../img/08_img/photo2.png"]
+        // let icon2 = ["../../img/08_img/youduiqi1.png","../../img/08_img/jvzhong1.png","../../img/08_img/zuoduiqi1.png",]
+        // let icon3 = ["../../img/08_img/charu1.png","../../img/08_img/lianjie_delete1.png","../../img/08_img/biaoqing1.png","../../img/08_img/photo1.png"]
+        function Dom(){
+            $(list_title).each(function(index){
+                let p = $("<li/>").appendTo("ul")
+                $("<div/>").text(list_title[index]).appendTo(p) 
+                if(index==1){
+                    $("<select>").addClass("sel1").appendTo(p)
+                    $("<select>").addClass("sel2").appendTo(p)
+                }
+                else if(index==2){
+                    $("<input/>").attr({placeholder:"例如：肖大哈"}).appendTo(p)
+                }
+                else if(index==3){
+                    $("<textarea/>").attr({placeholder:"请输入内容"}).appendTo(p)
+                }
+                else if(index==4){
+                    let j = $("<label/>").attr({for:"sel_inp1"}).appendTo(p)
+                    $("<p/>").text("是").appendTo(j)
+                    $("<input/>").attr({id:"sel_inp1",type:"radio",name:"re"}).appendTo(j)
+                    let jj = $("<label/>").attr({for:"sel_inp2"}).appendTo(p)
+                    $("<p/>").text("否").appendTo(jj)
+                    $("<input/>").attr({id:"sel_inp2",type:"radio",name:"re"}).appendTo(jj)
+                }
+                else if(index==5){
+                    let l = $("<div/>").addClass("div_edit").appendTo(p)
+                    let ll =  $("<div/>").appendTo(l)
+                    $(icon).each(function(index){
+                        $("<span/>").css({backgroundImage:"url("+icon[index]+")"}).appendTo(ll)
+                    })
+                    $(".div_edit>div>span").each(function(index){
+                        $(this).mousemove(function(){
+                            $(this).css({backgroundImage:"url("+icon2[index]+")"})
+                        })
+                        $(this).mouseleave(function(){
+                            $(this).css({backgroundImage:"url("+icon[index]+")"})
+                        })
+                    })
+                    $("<textarea/>").appendTo(l)
+                }
+                else{
+                    $("<input/>").appendTo(p)
+                }
+            })
+            let d = $("<li/>").css("marginLeft","10%").appendTo("ul")
+            $("<button/>").addClass("btn1").text("立即提交").appendTo(d)
+            $("<button/>").addClass("btn2").text("重置").appendTo(d)
+            $("<button/>").addClass("btn3").text("radio").appendTo(d)
+           
+        }
+        function opreate(){
+            //获取改变后的select的值的遍历应该放在change面
+            $("<option/>").text(list_city["北京"][0]).appendTo(".sel2")
+            for(let i in list_city){
+                $("<option/>").text(i).appendTo(".sel1")
+            }
+            $(".sel1").change(function(){
+                $(".sel2>option").remove()
+                let o = $(".sel1").val()
+                for(let i in list_city[o]){   
+                    $("<option/>").text(list_city[o][i]).appendTo(".sel2")
+                }  
+            })
+        }
+        Dom()
+        opreate()
+    </script>
+</body>
+</html>

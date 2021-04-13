@@ -1,0 +1,190 @@
+*{
+    padding: 0;
+    margin: 0;
+    font: 14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;
+}
+.all{
+    width: 100%;
+    height: 98vh;
+}
+//list
+#left{
+    background: rgb(15, 15, 15);
+    height: 100%;
+    width: 16%;
+    float: left;
+    color: #333333;
+    overflow: hidden;
+}
+.left_title{
+    width: 100%;
+    height: 15%;
+    background-color:rgb(22, 22, 22);
+    position: relative;
+}
+.left_title>span{
+    position: absolute;
+    display: block;
+    width: 25%;
+    height: 50%;
+    top: 20%;
+    left: 10%;
+    border-radius: 15px;
+    background-color: rgba(230, 175, 75, 0.815);
+    color: white;
+    text-align: center;
+    line-height: 70px;
+}
+.left_title>p{
+    position: absolute;
+    display: block;
+    height: 50%;
+    top: 32%;
+    left: 42%;
+    font-size: 22px;
+    color: white;
+}
+.list{
+    width: 100%;
+    height: 85%;
+    ul{
+        width: 100%;
+        height: 100%;
+        color: #ccc;
+    }
+}
+.list_nav{
+    display: block;
+    width: 100%;;
+    overflow: hidden;
+    .list_first{
+        width: 100%;
+        height: 100%;
+        border-top:1px solid rgb(63, 63, 63);
+        display: flex;
+        justify-content: left;
+        transition: all 0.3s ease;
+        div{
+            width: 0;
+            height: 20px;
+            background-color: #15A848;
+        }
+        span{
+            display: block;
+            width: 7%;
+            height:20px;  
+            background-size: cover;
+            margin-top: 6%;
+            margin-left: 5%;
+            // background-image: u;
+        }
+        p{
+            margin-left: 5%;
+            width: 80%;
+            display: block;
+            font-size: 14px;
+            line-height: 55px;
+        }
+        i{
+            margin-left: -30px;
+            margin-top: 20px;
+            display: block;
+            width: 5%;
+            height: 12px;
+            background-size: cover;
+            transform: rotate(270deg);
+            background-image: url(../../img/xiala.png);
+        }
+        &:hover{
+            color: #c2c2c2;
+            border-left: 8px solid #15A848;
+            i{
+                background-image: url(../../img/xiala2.png);
+            }
+        }
+    }
+    .list_second{
+        display: block;
+        height:0px;
+        width: 100%;
+        padding-left: 60px;
+        line-height: 50px;
+        border: none;
+        transition: none;
+        &:hover{
+            content: "";
+            border-left:none;
+           
+        }
+    }
+}
+//main
+#right{
+    margin-left: 16%;
+    width: 84%;
+    height: 100%;
+}
+#right_top{
+    position: relative;
+    width: 100%;
+    height: 8%;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.493);
+    ul{
+        height: 100%;
+        position: absolute;
+        display: flex;
+        right: 0%;
+         li{
+             text-align: center;
+             margin-left: 2%;
+             width: 100px;
+             height: 100%;
+             border-left: 1px solid rgba(204, 204, 204, 0.493);
+             color: rgb(161, 161, 161);
+             line-height: 70px;
+             list-style: none;
+         }
+     }
+}
+#right_main{
+    width: 100%;
+    height: 92%;
+    border-left: 1px solid #15A848;
+    overflow: hidden;
+}
+#right_top2{
+    width: 100%;
+    height: 6%;
+    background-color: rgba(204, 204, 204, 0.199);
+    div{
+        width: 10%;
+        height: 100%;
+        background-color: white;
+    }
+}
+#ifma{
+    height: 93%;
+    width: 101%;
+}
+.list_second_movestyle{
+    background-color: rgb(40, 42, 50);
+    color: rgb(194, 194, 194);
+}
+.list_second_clickstyle{
+    background-color: rgb(255, 193, 79);
+    color: white;
+}
+#right_top2>div{
+    text-align: center;
+    line-height: 60px;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+.retrn_movergb{
+    background-color: rgb(40, 42, 50);
+    color:white
+}
+.retrn_clickrgb{
+    background-color: rgb(40, 42, 50);
+    color:white
+}

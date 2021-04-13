@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/10.css">
+    <script src="../../js/jquery.js"></script>
+</head>
+<body>
+    <div class="all">
+        <button id="btn_adduser">添加用户</button>
+        <table>
+            <thead>
+                <tr>
+                    <td>分管名称</td>
+                    <td>分管编码</td>
+                    <td>所属区域</td>
+                    <td>负责人</td>
+                    <td>登录名</td>
+                    <td>联系方式</td>
+                    <td>传真</td>
+                    <td>邮箱</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="alter">
+    </div>
+    
+<script>
+    let list_title= ["分管名称","分管编码","所属区域","负责人","登录名","联系方式","传真","邮箱"]
+    let user = [
+        {
+            name:"肖大哈",
+            id:"DLS201802281450280741",
+            city:"成都市",
+            duty_man:"肖大哈",
+            login_name:"肖大哈",
+            tel:"15892880153",
+            te_mil:"2855-328866753",
+            email:"2535400886@qq.com"
+        },
+        {
+            name:"肖二哈",
+            id:"DLS201802281450280741",
+            city:"成都市",
+            duty_man:"肖二哈",
+            login_name:"肖二哈",
+            tel:"15892880153",
+            te_mil:"2855-328866753",
+            email:"2535400886@qq.com"
+        },
+        {
+            name:"肖三哈",
+            id:"DLS201802281450280741",
+            city:"成都市",
+            duty_man:"肖三哈",
+            login_name:"肖三哈",
+            tel:"15892880153",
+            te_mil:"2855-328866753",
+            email:"2535400886@qq.com"
+        }
+    ]
+    //打印用户
+    function user_list() { 
+        $("tbody>tr").each(function(){
+            $(this).remove()
+        })
+        $(user).each(function(index){
+            $("tbody").append("<tr/>")
+        })
+        $("tbody>tr").each(function list(index){    
+            for(let i in user[index]){
+                $("<td/>").text(user[index][i]).appendTo(this)
+            }  
+            let p = $("<button/>").text("修改").css("marginLeft","-5%")
+            //修改函数
+            p.click(function(){
+                $("#alter").remove() 
+                let pp = $("<div/>").attr("id","alter").appendTo(".all")
+                for(let i in user[index]){
+                    $("<input/>").val(user[index][i]).appendTo("#alter")
+                }
+                let defined_alter = $("<button/>").text("确定修改").addClass("btn_return")
+                //确定修改后函数
+                defined_alter.click(function(){
+                    $("#alter>input").each(function(ll) { 
+                        let oo = $(this).val()
+                        $(p).parents("tr").children("td").each(function (params) {
+                            if(params==ll){
+                            $(this).text(oo)
+                            }
+                        })
+                    })          
+                    $("#alter>input").each(function(i){
+                        if(i==0){
+                            user[index].name = $(this) .val()
+                        }
+                        if(i==1){
+                            user[index].id = $(this).val()
+                        }
+                        if(i==2){
+                            user[index].city = $(this).val()
+                        }
+                        if(i==3){
+                            user[index].duty_name = $(this).val()
+                        }
+                        if(i==4){
+                            user[index].login_name = $(this).val()
+                        }
+                        if(i==5){
+                            user[index].tel = $(this).val()
+                        }
+                        if(i==6){
+                            user[index].te_mil = $(this).val()
+                        }
+                        if(i==6){
+                            user[index].email = $(this).val()
+                        }
+                    })    
+                    $("#alter").remove() 
+                })
+                $("#alter").append(defined_alter)
+            })
+            let j = $("<button/>").text("删除").css("marginLeft","10%")
+            j.click(function(){
+                user.splice(index,1)
+                $(this).parents("tr").remove()
+                $("#alter").remove() 
+            })
+            $("<td/>").append(p,j).appendTo(this)
+        }) 
+     }
+    
+    //检索
+    function btn_key() {
+        $("#btn_key").click(function(){
+            let isexist = false
+            $("tbody>tr").remove()
+            $(user).each(function(index){
+                if(this.name==$("#set").val()){
+                    isexist=true      
+                    let u =$("<tr/>").appendTo("tbody")
+                    for(let i in user[index]){
+                        $("<td/>").text(user[index][i]).appendTo(u)
+                    }   
+                    let p = $("<button/>").text("修改").css("marginLeft","-5%")
+                    //修改函数
+                    p.click(function(){
+                        //清空#alter,避免重复出现#alter
+                        $("#alter").remove() 
+                        let pp = $("<div/>").attr("id","alter").appendTo(".all")
+                        for(let i in user[index]){
+                            $("<input/>").val(user[index][i]).appendTo("#alter")
+                        } 
+                        //确认修改函数
+                        let defined_alter = $("<button/>").text("确定修改").addClass("btn_return")
+                        defined_alter.click(function(){
+                            $("#alter>input").each(function(ll) { 
+                                let oo = $(this).val()
+                                $(p).parents("tr").children("td").each(function (params) {
+                                    if(params==ll){
+                                    $(this).text(oo)
+                                    }
+                                })
+                            })          
+                            $("#alter>input").each(function(i){
+                                if(i==0){
+                                    user[index].name = $(this) .val()
+                                }
+                                if(i==1){
+                                    user[index].id = $(this).val()
+                                }
+                                if(i==2){
+                                    user[index].city = $(this).val()
+                                }
+                                if(i==3){
+                                    user[index].duty_name = $(this).val()
+                                }
+                                if(i==4){
+                                    user[index].login_name = $(this).val()
+                                }
+                                if(i==5){
+                                    user[index].tel = $(this).val()
+                                }
+                                if(i==6){
+                                    user[index].te_mil = $(this).val()
+                                }
+                                if(i==6){
+                                    user[index].email = $(this).val()
+                                }
+                            })  
+                            //确认修改，传参后将#alter删除，避免重复生成#alter
+                            $("#alter").remove() 
+                        })
+                        $("#alter").append(defined_alter)
+                    })
+                    let j = $("<button/>").text("删除").css("marginLeft","2%")
+                    //删除函数
+                    j.click(function(){
+                        user.splice(index,1)
+                        $(this).parents("tr").remove()
+                        //在修改过程中点击删除，连同修改框一同删除，避免找不到修改地址
+                        $("#alter").remove() 
+                    })
+                    let h = $("<button/>").text("基本信息").css("marginLeft","2%")
+                    $("<td/>").append(p,j,h).appendTo(u)
+                }
+            })
+
+            if(isexist==false){
+                alert("用户不存在")
+            }
+        })
+    }
+    function add_user() {
+        $("#btn_adduser").click(function () {
+            $("#alter").remove()
+            $("#add_userlist").remove()
+            $("<div/>").attr("id","add_userlist").appendTo(".all")
+            for(let i =0;i<8;i++){
+                $("<input/>").appendTo("#add_userlist")
+            }
+            $("#add_userlist>input").each(function(index){ 
+                    $(this).attr({placeholder:list_title[index]})
+            })
+            let defined_alter = $("<button/>").text("确定添加").addClass("add_userlist")
+            defined_alter.click(function (){            
+                let p = new Object();
+                $("#add_userlist>input").each(function (i){
+                    if(i==0&&$(this).val()!=0){
+                        p.name = $(this).val()
+                    }
+                    if(i==1&&$(this).val()!=0){
+                        p.id = $(this).val()
+                    }
+                    if(i==2&&$(this).val()!=0){
+                        p.city = $(this).val()
+                    }
+                    if(i==3&&$(this).val()!=0){
+                        p.duty_name = $(this).val()
+                    }
+                    if(i==4&&$(this).val()!=0){
+                        p.login_name = $(this).val()
+                    }
+                    if(i==5&&$(this).val()!=0){
+                        p.tel = $(this).val()
+                    }
+                    if(i==6&&$(this).val()!=0){
+                        p.te_mil = $(this).val()
+                    }
+                    if(i==7&&$(this).val()!=0){
+                        p.email = $(this).val()
+                    }
+                })
+                if(Object.keys(p).length  == 8){
+                    user.push(p)
+                    $("tbody>tr").remove()
+                    user_list()
+                }else{
+                    alert("请添加完整信息")
+                }
+                $("#add_userlist").remove()
+            })        
+            $(defined_alter).appendTo("#add_userlist")
+        })
+        
+    }
+    user_list()
+    add_user()
+    // btn_key()
+    
+
+</script>
+</body>
+</html>
